@@ -1,5 +1,6 @@
 package com.bcopstein.Numerologia;
 
+import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class Formatador{
@@ -9,9 +10,26 @@ public class Formatador{
     // Se a palavra estiver vazia tambem retorna a excecao
     // Retorna a palavra em maiusculas 
     public String formataPalavra(String palavra){
-        //TODO
-    	return null;
+        if(palavra == null || palavra.trim().isEmpty()) {
+        	throw new IllegalArgumentException();
+        }
+        else {
+        	Pattern p = Pattern.compile("[^A-Za-z0-9\\s]");//permite numeros,letras e espaços
+        	Matcher m = p.matcher(palavra);
+        	// boolean b = m.matches();
+        	boolean b = m.find();//se b==true entao tem caractere especial
+	     					  //se b==false entao não possui caractere especial
+        	if(b)throw new IllegalArgumentException();
+        	else {
+        		for(int i=0;i<palavra.length();i++) {
+        			if(palavra.substring(i,i+1).equals(" "));//tem espaço
+        		}
+        	}
+        }
+        return "";
+    	
     }
+
 
     // Utiliza o metodo formataPalavra e confere se a primeira letra nao e numerica
     public String formataPalavraPlus(String palavra) {
