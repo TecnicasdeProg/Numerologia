@@ -13,17 +13,27 @@ public class Calculador{
     }
 
     public int calculaNumeroDaVida(String data){
-        int numero = 0;
-        return numero;
+    	return reducao.reducaoData(data);
     }
 
     public int calculaNumeroDestino(String nomeCompleto){
-        int numero = 0;
-        return numero;
+        return reducao.reducaoFrase(nomeCompleto);
     }
 
     public int calculaNumeroDesejosDaAlma(String nomeCompleto){
     	int numero = 0;
-        return numero;
+    	for(int i = 0; i < nomeCompleto.length(); i++) {
+    		switch(nomeCompleto.charAt(i)){
+    		case 'A': numero += 1;
+    		case 'E': numero += 5;
+    		case 'I': numero += 9;
+    		case 'O': numero += 6;
+    		case 'U': numero += 3;
+    		default: continue;
+    		}
+    	}
+    	
+        if(numero % 9 == 0) return 9;
+        else return numero % 9;
     }
 }
