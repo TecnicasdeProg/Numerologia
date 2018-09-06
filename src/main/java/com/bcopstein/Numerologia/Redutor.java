@@ -1,5 +1,8 @@
 package com.bcopstein.Numerologia;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.regex.Pattern;
 
 // Todas as palavras so podem conter letras maiusculas nao acentudas e digitos
@@ -102,8 +105,11 @@ public class Redutor{
 
     // Decodifica um caracter segundo a tabela selecionada
     private int decodChar(char c){
-        //TODO
-        return 0;
+        if(tipoTab.equals(TipoTabela.PITAGORICA)) {
+        	return tabPitagorica(c);
+        } else {
+        	return tabChaldean(c);
+        }
     }
 
     private String reducaoSimples(String str){
@@ -118,20 +124,43 @@ public class Redutor{
 
     // Calcula a reducao de palavra usando a tabela corrente
     public int reducaoPalavra(String palavra){
-        //TODO
-        return 0;
+        char letras[] = palavra.toCharArray();
+        int r = 0;
+        for(char l: letras) {
+        	r += decodChar(l);
+        }
+        return r;
     }
 
     // Calcula a reducao de frase usando a tabela corrente
     public int reducaoFrase(String frase){
-        //TODO
-        return 0;
+        String palavras[] = frase.split(" ");
+        int r = 0;
+        for(String p: palavras) {
+        	r += reducaoPalavra(p);
+        }
+        return r;
     }
 
     // Calcula a reducao de uma data no formato dd/mm/aaaa
     // Se estiver fora do formato lanca IllegalArgumentException
     public int reducaoData(String data){
-        //TODO
+    	
+    	// Incompleto
+    	
+        try {
+        	SimpleDateFormat formato = new SimpleDateFormat("dd/mm/yyyy");
+        	Date parsedData = formato.parse(data);
+        	if(parsedData.equals(formato)) {
+        		int r = 0;
+	        	String partes[] = data.split("/");
+	        	int dia = Integer.parseInt(partes[0]);
+	        	int mes = Integer.parseInt(partes[1]);
+	        	int ano = Integer.parseInt(partes[2]);
+        	}
+        } catch (IllegalArgumentException | ParseException e) {
+            System.out.println(e);
+        }
         return 0;
     }
 }
