@@ -10,7 +10,7 @@ public class Formatador{
     // Se a palavra contiver qualquer outro tipo de simbolo deve retornar IllegalArgumentException
     // Se a palavra estiver vazia tambem retorna a excecao
     // Retorna a palavra em maiusculas 
-    public String formataPalavra(String palavra){
+    public String formataPalavra(String palavra){//
         if(palavra == null || palavra.trim().isEmpty()) {
         	throw new IllegalArgumentException();
         }
