@@ -13,11 +13,22 @@ public class Calculador{
     }
 
     public int calculaNumeroDaVida(String data){
-    	return reducao.reducaoData(data);
+      int numero = 0;
+      String newData = reducao.reducaoData(data);
+      for(int i = 0; i < data.length(); i++) {
+        numero += Integer.parseInt(String.valueOf(newData.charAt(i)));
+      }
+
+    	return (numero % 9 == 0) ? 9 : numero % 9;
     }
 
     public int calculaNumeroDestino(String nomeCompleto){
-        return reducao.reducaoFrase(nomeCompleto);
+        int numero = 0;
+        String newData = reducao.reducaoFrase(nomeCompleto);
+        for(int i = 0; i < nomeCompleto.length(); i++) {
+          numero += Integer.parseInt(String.valueOf(newData.charAt(i)));
+        }
+        return (numero % 9 == 0) ? 9 : numero % 9;
     }
 
     public int calculaNumeroDesejosDaAlma(String nomeCompleto){
@@ -32,8 +43,7 @@ public class Calculador{
     		default: continue;
     		}
     	}
+      return (numero % 9 == 0) ? 9 : numero % 9;
     	
-        if(numero % 9 == 0) return 9;
-        else return numero % 9;
     }
 }

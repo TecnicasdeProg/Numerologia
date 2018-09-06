@@ -151,7 +151,6 @@ public class Redutor {
 			String dia = String.join("/", data);
 			// incompleto
 		} catch (IllegalArgumentException | ParseException e) {
-			throw new IllegalArgumentException(e + "Formato inválido para data.");
 		}
 		return r;
 	}
