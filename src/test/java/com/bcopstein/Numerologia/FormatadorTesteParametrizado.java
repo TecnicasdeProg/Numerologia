@@ -1,36 +1,17 @@
 package com.bcopstein.Numerologia;
 
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import java.util.Arrays;
-import java.util.Collection;
-
-import org.junit.jupiter.api.Test;
-import org.junit.runner.RunWith;
-import org.junit.runners.Parameterized;
-import org.junit.runners.Parameterized.Parameters;
-
-@RunWith(Parameterized.class)
 public class FormatadorTesteParametrizado {
-    private String fInput;
-    private String fExpected;
-
-@Parameters
-public Collection<Object[]> data() {
-    return Arrays.asList(new Object[][] {
-        { "AL4GUM4COIWQ", "al4gum4coiwq" }, { "NAIZU", "naizu" }, { "2", "2" }, { "A", "a" }, { "NENHUMAMUDANÇA", "nenhumamudança" }, { "FORMATADORFUNCIONA", "formatadorFUNCIONA" }, { "7672", "7672" }  
-    });
-}
-
-
-public void FormatadorTeste(String input, String expected) {
-    this.fInput = input;
-    this.fExpected = expected;
-}
-
-@Test
-public void testeParametrizado() {
-	Formatador f = new Formatador();
-    assertEquals(fExpected, f.formataPalavra(fInput));
-}
+	@DisplayName("Testa palavras fomatador")
+    @ParameterizedTest
+    @CsvSource({ "al4gum4coiwq,AL4GUM4COIWQ","naizu,NAIZU", "2,2", "a,A","nenhumamudança,NENHUMAMUDANÇA","formatadorFUNCIONA,FORMATADORFUNCIONA","7672a,7672A"})
+    public void fomartador(String palavra,String respostaEsperada) {
+		Formatador f = new Formatador();
+		String result = f.formataPalavra(palavra);
+		assertEquals(result,respostaEsperada);
+    }
 }
