@@ -42,7 +42,7 @@ public class Formatador{
 
     // Utiliza o metodo formataPalavra e confere se a primeira letra nao e numerica
     public String formataPalavraPlus(String palavra) {
-    	if("123456789".contains(palavra.substring(0,1))) {throw new IllegalArgumentException("Primeiro caracter é um digito");}
+    	if("123456789".contains(palavra.substring(0,1))) {throw new IllegalArgumentException();}
     	return formataPalavra(palavra);
     }
 
