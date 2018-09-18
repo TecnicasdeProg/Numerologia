@@ -13,37 +13,37 @@ public class Calculador{
     }
 
     public int calculaNumeroDaVida(String data){
-      int numero = 0;
-      String newData = reducao.reducaoData(data);
-      for(int i = 0; i < data.length(); i++) {
-        numero += Integer.parseInt(String.valueOf(newData.charAt(i)));
-      }
-
+    	int numero = 0;
+    	numero = reducao.reducaoData(data);
+    	
     	return (numero % 9 == 0) ? 9 : numero % 9;
     }
 
     public int calculaNumeroDestino(String nomeCompleto){
+        String newData = "";
         int numero = 0;
-        String newData = reducao.reducaoFrase(nomeCompleto);
-        for(int i = 0; i < nomeCompleto.length(); i++) {
-          numero += Integer.parseInt(String.valueOf(newData.charAt(i)));
-        }
+        
+        newData = formatador.formataFrase(nomeCompleto);
+        numero = reducao.reducaoFrase(newData);
+        
         return (numero % 9 == 0) ? 9 : numero % 9;
     }
 
     public int calculaNumeroDesejosDaAlma(String nomeCompleto){
     	int numero = 0;
-    	for(int i = 0; i < nomeCompleto.length(); i++) {
-    		switch(nomeCompleto.charAt(i)){
-    		case 'A': numero += 1;
-    		case 'E': numero += 5;
-    		case 'I': numero += 9;
-    		case 'O': numero += 6;
-    		case 'U': numero += 3;
-    		default: continue;
+    	String newData = "";
+    	newData = formatador.formataFrase(nomeCompleto);
+    	for(int i = 0; i < newData.length(); i++) {
+    		switch(newData.charAt(i)){
+    		case 'A': numero += 1; break;
+    		case 'E': numero += 5; break;
+    		case 'I': numero += 9; break;
+    		case 'O': numero += 6; break;
+    		case 'U': numero += 3; break;
+    		default: break;
     		}
     	}
-      return (numero % 9 == 0) ? 9 : numero % 9;
-    	
+      
+    	return (numero % 9 == 0) ? 9 : numero % 9;
     }
 }
