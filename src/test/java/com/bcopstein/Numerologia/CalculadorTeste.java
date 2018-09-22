@@ -4,13 +4,8 @@ import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import static org.junit.Assert.assertEquals;
-import static org.mockito.Matchers.intThat;
-import static org.mockito.Matchers.anyDouble;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
-
-import org.junit.Before;
-import org.mockito.ArgumentMatcher;
 
 class CalculadorTest {
 	private Calculador c;
@@ -48,12 +43,12 @@ class CalculadorTest {
 	}
 	
 	@Test
-	public void NroDoDaVida() {
+	public void NroDaVidaErrado() {
 		assertThrows(IllegalArgumentException.class,() -> c.calculaNumeroDaVida("2"));
 	}
 	
 	@Test
-	public void NroDoDaDestino() {
+	public void NroDoDestinoErrado() {
 		assertThrows(IllegalArgumentException.class,() -> c.calculaNumeroDestino("a22@"));
 	}
 }

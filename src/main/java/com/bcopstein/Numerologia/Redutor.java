@@ -1,10 +1,5 @@
 package com.bcopstein.Numerologia;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.regex.Pattern;
-
 // Todas as palavras so podem conter letras maiusculas nao acentudas e digitos
 // Todas as frases devem ser formadas por palavras separadas por um espaco em branco cada
 // As datas devem seguir o formato dd/mm/aaaa
@@ -144,15 +139,20 @@ public class Redutor {
 	// Calcula a reducao de uma data no formato dd/mm/aaaa
 	// Se estiver fora do formato lanca IllegalArgumentException
 	public int reducaoData(String data) {
-		SimpleDateFormat formato = new SimpleDateFormat("dd/mm/yyyy");
 		int r = 0;
-		try {
-			formato.parse(data.trim());
-			String dia = String.join("/", data);
-			// incompleto
-		} catch (IllegalArgumentException | ParseException e) {
-			throw new IllegalArgumentException(e + "\nFormato inválido para a data.");
+		if(data.matches("(\\d{2}/\\d{2}/\\d{4})")) {
+			String newData[] = data.split("/");
+			data = "";
+			for(String d : newData) {
+				data += d;
+			}
+			for(int i = 0; i < data.length(); i++) {
+				r += Integer.parseInt(String.valueOf(data.charAt(i)));
+			}
+		}else {
+			throw new IllegalArgumentException ("Formato Errado");
 		}
 		return r;
 	}
 }
+

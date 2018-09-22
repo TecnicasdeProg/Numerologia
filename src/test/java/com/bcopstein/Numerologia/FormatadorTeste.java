@@ -2,16 +2,8 @@ package com.bcopstein.Numerologia;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collection;
-
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
-import org.junit.runner.RunWith;
-import org.junit.runners.Parameterized;
-import org.junit.runners.Parameterized.Parameters;
 
 public class FormatadorTeste {
 	private Formatador f;
@@ -38,13 +30,8 @@ public class FormatadorTeste {
 	}
 	@Test
 	void testaFrase() {
-		ArrayList<String> resp = f.formataFrase("eST4 frase na2 esta f0rmat4");
-		ArrayList<String> result = new ArrayList<String>();
-		result.add("EST4");
-		result.add("FRASE");
-		result.add("NA2");
-		result.add("ESTA");
-		result.add("F0RMAT4");
+		String resp = f.formataFrase("eST4 frase na2 esta f0rmat4");
+		String result = "EST4FRASENA2ESTAF0RMAT4";
 		assertEquals(result,resp);
 	}
 }

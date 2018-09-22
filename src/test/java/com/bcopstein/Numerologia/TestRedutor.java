@@ -4,7 +4,6 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 
 public class TestRedutor {
-	private TipoTabela tipoTab;
 	private Redutor r = new Redutor();
 
 	@Test
@@ -53,8 +52,15 @@ public class TestRedutor {
 	
 	@Test
 	public void testReducaoData() {
-		String data = "10/10/1010";
-	}
+		String data = "10/10/2011";
+		assertEquals(6, r.reducaoData(data));
+}
+	
+	@Test(expected = IllegalArgumentException.class)
+	public void testReducaoDataErroAno() {
+		String data = "10/11/211";
+		assertEquals(6, r.reducaoData(data));
+}
 	
 	@Test(expected = IllegalArgumentException.class)
 	public void testReducaoDataThrow() {

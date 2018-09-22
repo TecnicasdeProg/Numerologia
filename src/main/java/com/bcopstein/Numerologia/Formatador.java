@@ -50,9 +50,9 @@ public class Formatador{
     // Frases vazias geram IllegalArgumentException
     // As palavras da frase devem ser convertidas pelo metodo formataPalavra
     // Qualquer outro simbolo gera IllegalArgumentException
-    // Retorna um array de palavras validas 
-    public ArrayList<String> formataFrase(String frase){
-    	if(frase == null || frase.trim().isEmpty()) {
+    public String formataFrase(String frase){
+    	String newFrase = "";
+    	if(frase.isEmpty() || frase.trim().isEmpty()) {
         	throw new IllegalArgumentException();
         }
     	else {
@@ -72,7 +72,12 @@ public class Formatador{
          			}
          		}
          		retorno.add(formataPalavra(frase.substring(iniciaPalavra,frase.length())));
-        		return retorno;
+        		
+         		for(String f : retorno) {
+         			newFrase += f;
+         		}
+         		
+         		return newFrase;
          	}
     	}
     }
