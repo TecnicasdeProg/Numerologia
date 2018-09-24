@@ -3,8 +3,15 @@ package com.bcopstein.Numerologia;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
+import org.junit.Before;
+
 public class TestRedutor {
-	private Redutor r = new Redutor();
+	private Redutor r;
+	
+	@Before
+	public void setUp() {
+		r = new Redutor();
+	}
 
 	@Test
 	public void testReducaoPalavraPitagorica() {

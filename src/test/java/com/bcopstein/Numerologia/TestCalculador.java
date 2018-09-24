@@ -1,13 +1,15 @@
 package com.bcopstein.Numerologia;
 
 import static org.junit.jupiter.api.Assertions.*;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import static org.junit.Assert.*;
 import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
-class CalculadorTest {
+class TestCalculador {
 	private Calculador c;
 	private Formatador mockFormat = mock(Formatador.class);
 	private Redutor mockRed = mock(Redutor.class);
@@ -23,7 +25,7 @@ class CalculadorTest {
 	}
 	
 	@Test
-	public void NroDavida() {
+	 public void NroDavida() {
 		assertEquals(8, c.calculaNumeroDaVida("07/22/1995"));
 	}
 	
